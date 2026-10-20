@@ -15,5 +15,22 @@ describe('Repository', () => {
       const repository = new Repository(repoPath, -1, null, false)
       assert.equal(repository.name, 'T:\\')
     })
+
+    it('uses the main worktree path when switched onto a linked worktree', async () => {
+      const mainPath = '/some/cool/path'
+      const worktreePath = '/some/cool/path-wt-a'
+      const repository = new Repository(
+        worktreePath,
+        -1,
+        null,
+        false,
+        null,
+        {},
+        false,
+        undefined,
+        mainPath
+      )
+      assert.equal(repository.name, 'path')
+    })
   })
 })

@@ -67,7 +67,9 @@ export class Repository {
      */
     public readonly mainWorktreePath: string | undefined = undefined
   ) {
-    this.name = (gitHubRepository && gitHubRepository.name) || getBaseName(path)
+    this.name =
+      (gitHubRepository && gitHubRepository.name) ||
+      getBaseName(mainWorktreePath ?? path)
 
     this.hash = createEqualityHash(
       path,
